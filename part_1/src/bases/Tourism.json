@@ -1,0 +1,13 @@
+{
+   "title":"Tourism",
+   "facts":{
+      "météo":[
+         "pluvieux",
+         "ensoleillé"
+      ],
+      "environnment":[
+         "plein air",
+         "clos"
+      ]
+   }
+}

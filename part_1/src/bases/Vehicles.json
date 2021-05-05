@@ -1,0 +1,15 @@
+{
+   "title":"Vehicles",
+   "facts":{
+      "Number of wheels":[
+         "2",
+         "3",
+         "4"
+      ],
+      "Number of doors":[
+         "2",
+         "3",
+         "4"
+      ]
+   }
+}
