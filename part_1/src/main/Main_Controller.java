@@ -87,7 +87,7 @@ public class Main_Controller implements Initializable {
 
             for (Iterator<String> it = facts.keys(); it.hasNext(); ) {
                 String fact = it.next();
-
+                
                 Text text = new Text(fact);
                 text.getStyleClass().add("label");
                 Translate translate_text = new Translate(text.getX() + margin_label_left, text.getY() + margin_label_top,0);
