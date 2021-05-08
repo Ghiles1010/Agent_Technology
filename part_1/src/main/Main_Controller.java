@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
+import main.raisoneur.Raisonneur;
 import org.json.*;
 
 import java.io.File;
@@ -18,11 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.ResourceBundle;
-
+import java.util.*;
 
 
 public class Main_Controller implements Initializable {
@@ -51,7 +48,7 @@ public class Main_Controller implements Initializable {
     @FXML
     void reason(ActionEvent event) {
 
-        String result = Raisonneur.raisonner(new JSONObject(), new ArrayList<String>());
+        String result = Raisonneur.raisonner(new JSONObject(), new HashMap<>(), "Vehicle");
         System.out.println(result);
 
 

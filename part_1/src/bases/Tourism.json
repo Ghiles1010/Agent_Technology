@@ -1,5 +1,6 @@
 {
    "title":"Tourism",
+   "but":"lieu_a_visiter",
    "facts":{
       "météo":[
          "pluvieux",
@@ -9,5 +10,14 @@
          "plein air",
          "clos"
       ]
+   },
+   "rules":{
+      "CASBA":{
+         "AND":[],
+         "THEN":{
+            "type_result": "lieu_a_visiter",
+            "result": "CASBA"
+         }
+      }
    }
 }
