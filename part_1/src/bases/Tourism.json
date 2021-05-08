@@ -9,5 +9,14 @@
          "plein air",
          "clos"
       ]
+   },
+   "rules":{
+      "CASBA":{
+         "AND":[],
+         "THEN":{
+            "type_result": "lieu_a_visiter",
+            "result": "CASBA"
+         }
+      }
    }
 }

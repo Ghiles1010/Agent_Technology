@@ -3,10 +3,14 @@ package main.raisoneur;
 public class Condition {
     private final String variableName, operatorToCompare, operation;
 
-    public Condition(String variableName, String operatorToCompare, String operation) {
+    public Condition(String variableName, String operation, String operatorToCompare) {
         this.variableName = variableName;
         this.operatorToCompare = operatorToCompare;
         this.operation = operation;
+    }
+
+    public String getVariableName() {
+        return variableName;
     }
 
     public boolean makeOperation(String inputOperator){
@@ -24,13 +28,13 @@ public class Condition {
             float operatorToCompareFloat = Float.parseFloat(operatorToCompare);
             switch (operation) {
                 case ">=":
-                    return operatorToCompareFloat >= inputFloat;
+                    return inputFloat >= operatorToCompareFloat;
                 case ">":
-                    return operatorToCompareFloat > inputFloat;
+                    return inputFloat > operatorToCompareFloat;
                 case "<=":
-                    return operatorToCompareFloat <= inputFloat;
+                    return inputFloat <= operatorToCompareFloat;
                 case "<":
-                    return operatorToCompareFloat < inputFloat;
+                    return inputFloat < operatorToCompareFloat;
                 default:
                     // erreur symbole incorecte
                     System.out.println("erreur symbole incorecte");

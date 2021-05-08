@@ -103,7 +103,7 @@
                "value_operator": "automobile"
             },
             {
-               "type_operator": "size",
+               "type_operator": "Size",
                "operation": "==",
                "value_operator": "small"
             },
@@ -126,7 +126,7 @@
                "value_operator": "automobile"
             },
             {
-               "type_operator": "size",
+               "type_operator": "Size",
                "operation": "==",
                "value_operator": "medium"
             },
@@ -149,7 +149,7 @@
                "value_operator": "automobile"
             },
             {
-               "type_operator": "size",
+               "type_operator": "Size",
                "operation": "==",
                "value_operator": "medium"
             },
@@ -172,7 +172,7 @@
                "value_operator": "automobile"
             },
             {
-               "type_operator": "size",
+               "type_operator": "Size",
                "operation": "==",
                "value_operator": "large"
             },
