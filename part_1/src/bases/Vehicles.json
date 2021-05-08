@@ -10,6 +10,18 @@
          "2",
          "3",
          "4"
+      ],
+      "Motor": [
+         "yes",
+         "no"
+      ],
+      "Size": [
+         "small",
+         "medium"
+      ],
+      "Vehicule Type": [
+         "automobile",
+         "cycle"
       ]
    }
 }
