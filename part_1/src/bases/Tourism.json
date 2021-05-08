@@ -1,5 +1,6 @@
 {
    "title":"Tourism",
+   "but":"lieu_a_visiter",
    "facts":{
       "météo":[
          "pluvieux",

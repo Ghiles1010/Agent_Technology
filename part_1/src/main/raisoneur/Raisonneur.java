@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Raisonneur {
 
-    public static String raisonner(JSONObject JSONrules, HashMap<String, String> facts){
+    public static String raisonner(JSONObject JSONrules, HashMap<String, String> facts, String but){
         Rules activeRules = new Rules(JSONrules);
         boolean isStatic = false, ruleValue;
 
@@ -47,8 +47,12 @@ public class Raisonneur {
             }
         }
 
-
-        return "Hi";
+        if(facts.containsKey(but)){
+            return facts.get(but);
+        } else {
+            System.out.println("Impossible de trouver le but");
+            return null;
+        }
     }
 
 }

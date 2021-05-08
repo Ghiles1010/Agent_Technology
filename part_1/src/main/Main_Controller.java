@@ -48,7 +48,7 @@ public class Main_Controller implements Initializable {
     @FXML
     void reason(ActionEvent event) {
 
-        String result = Raisonneur.raisonner(new JSONObject(), new HashMap<>());
+        String result = Raisonneur.raisonner(new JSONObject(), new HashMap<>(), "Vehicle");
         System.out.println(result);
 
 
