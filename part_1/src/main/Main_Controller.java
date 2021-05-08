@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
+import main.raisoneur.Raisonneur;
 import org.json.*;
 
 import java.io.File;
