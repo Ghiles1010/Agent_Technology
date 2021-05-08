@@ -33,6 +33,14 @@ public class Raisonneur {
                     }
                     if (ruleValue){
                         isStatic = false;
+                        // add the rule to he base fact
+                        if (!facts.containsKey(rule.getVariableResultat())){
+                            facts.put(rule.getVariableResultat(), rule.getResultats());
+                        } else {
+                            if(!rule.getResultats().equals(facts.get(rule.getVariableResultat()))){
+                                System.out.println("PROBLEM: Facts are incosistants, we must stop the reasoning");
+                            }
+                        }
                         System.out.println(rule.getRulename());
                     }
                 }
