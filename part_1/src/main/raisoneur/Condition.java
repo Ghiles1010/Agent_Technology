@@ -1,11 +1,9 @@
 package main.raisoneur;
 
 public class Condition {
-    private final int numeroCondition;
     private final String variableName, operatorToCompare, operation;
 
-    public Condition(int numeroCondition, String variableName, String operatorToCompare, String operation) {
-        this.numeroCondition = numeroCondition;
+    public Condition(String variableName, String operatorToCompare, String operation) {
         this.variableName = variableName;
         this.operatorToCompare = operatorToCompare;
         this.operation = operation;

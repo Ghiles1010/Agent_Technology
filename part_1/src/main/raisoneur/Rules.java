@@ -13,9 +13,9 @@ public class Rules implements Iterable<Rule>{
         this.rules = new ArrayList<>();
     }
 
-    public Rules(JSONObject jsonRules) {
+    public Rules(JSONObject JSONrules) {
         this();
-        this.JSONToRules(jsonRules);
+        this.JSONToRules(JSONrules);
     }
 
     public void addRule(Rule rule){
@@ -27,7 +27,10 @@ public class Rules implements Iterable<Rule>{
         return rules.iterator();
     }
 
-    public void JSONToRules(JSONObject jsonRules) {
-
+    public void JSONToRules(JSONObject JSONrules) {
+        for (Iterator<String> it = JSONrules.keys(); it.hasNext(); ){
+            String ruleName = it.next();
+            addRule(new Rule(ruleName ,JSONrules.getJSONObject(ruleName)));
+        }
     }
 }
