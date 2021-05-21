@@ -27,42 +27,42 @@
                   <Insets left="5.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="179.0" styleClass="side_button" text="Rules" />
+            <Button fx:id="select_facts_btn" mnemonicParsing="false" prefHeight="27.0" prefWidth="179.0" styleClass="side_button" text="Select Facts" />
+            <Button fx:id="select_rules_btn" mnemonicParsing="false" onAction="#select_rules" prefHeight="27.0" prefWidth="179.0" styleClass="side_button" text="See rules" />
          </children>
          <padding>
             <Insets top="30.0" />
          </padding>
       </VBox>
-      <AnchorPane layoutX="171.0" prefHeight="400.0" prefWidth="429.0" styleClass="background" stylesheets="@../style/main.css">
+      <AnchorPane fx:id="Right_Container" layoutX="169.0" prefHeight="400.0" prefWidth="431.0">
          <children>
-            <Button id="reason" fx:id="reason" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="344.0" layoutY="358.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#reason" stylesheets="@../style/main.css" text="Reason" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-            <Text layoutX="22.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="right_title" text="Select facts " wrappingWidth="164.05467987060547" />
-            <ScrollPane layoutY="42.0" prefHeight="158.0" prefWidth="380.0" styleClass="background" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-               <content>
-                  <VBox fx:id="facts_container" prefHeight="296.0" prefWidth="405.0" styleClass="background" stylesheets="@../style/main.css">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Météo">
-                           <VBox.margin>
-                              <Insets left="10.0" top="10.0" />
-                           </VBox.margin>
-                        </Text>
-                        <ComboBox fx:id="comboBox" prefHeight="27.0" prefWidth="300.0" promptText="Ensoleillé">
-                           <VBox.margin>
-                              <Insets left="30.0" top="5.0" />
-                           </VBox.margin>
-                        </ComboBox>
-                     </children>
-                     <padding>
-                        <Insets right="40.0" top="10.0" />
-                     </padding>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <AnchorPane fx:id="facts_content" prefHeight="400.0" prefWidth="425.0" styleClass="background" stylesheets="@../style/main.css">
+               <children>
+                  <Text layoutX="22.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="right_title" text="Select facts " wrappingWidth="164.05467987060547" />
+                  <ScrollPane layoutY="42.0" prefHeight="158.0" prefWidth="380.0" styleClass="background" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                     <content>
+                        <VBox fx:id="facts_container" prefHeight="296.0" prefWidth="405.0" styleClass="background" stylesheets="@../style/main.css">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="mm">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <ComboBox fx:id="comboBox" prefHeight="27.0" prefWidth="300.0" promptText="Ensoleillé">
+                                 <VBox.margin>
+                                    <Insets left="30.0" top="5.0" />
+                                 </VBox.margin>
+                              </ComboBox>
+                           </children>
+                           <padding>
+                              <Insets right="40.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <Button layoutX="343.0" layoutY="350.0" mnemonicParsing="false" onAction="#reason" text="Reason" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

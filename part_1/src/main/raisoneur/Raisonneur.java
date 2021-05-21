@@ -41,7 +41,6 @@ public class Raisonneur {
                                 System.out.println("PROBLEM: Facts are incosistants, we must stop the reasoning");
                             }
                         }
-                        System.out.println(rule.getRulename());
                     }
                 }
             }

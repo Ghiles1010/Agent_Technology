@@ -4,16 +4,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.raisoneur.Raisonneur;
 import org.json.*;
 
+import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -30,13 +39,11 @@ public class Main_Controller implements Initializable {
     int margin_combox_left = 30;
     int margin_combox_top = 5;
 
-    JSONObject selected_base;
+    private JSONObject selected_base;
+    private ArrayList<JSONObject> bases;
 
     String base_folder = System.getProperty("user.dir") + "\\src\\bases";
 
-
-    @FXML
-    private Button reason;
 
     @FXML
     private VBox facts_container;
@@ -44,16 +51,73 @@ public class Main_Controller implements Initializable {
     @FXML
     private VBox domain_container;
 
+    @FXML
+    private Button select_rules_btn;
+
+
+    @FXML
+    void select_rules(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Rules_Scene.fxml"));
+        Parent rules_scene = loader.load();
+
+        Rules_Controller controller = loader.getController();
+
+        controller.init(bases, selected_base);
+
+        Stage window = (Stage) select_rules_btn.getScene().getWindow();
+        window.setScene(new Scene(rules_scene));
+
+    }
+
 
     @FXML
     void reason(ActionEvent event) {
 
-        String result = Raisonneur.raisonner(new JSONObject(), new HashMap<>(), "Vehicle");
+        JSONObject rules = selected_base.getJSONObject("rules");
+        String but  = selected_base.getString("but");
+        HashMap<String, String> values = get_values();
+
+        String result = Raisonneur.raisonner(rules, values, but);
         System.out.println(result);
+
+
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(null);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().add(new Text("This is a Dialog"));
+        Scene dialogScene = new Scene(dialogVbox, 300, 200);
+        dialog.setScene(dialogScene);
+        dialog.show();
 
 
     }
 
+    private HashMap<String, String> get_values(){
+
+        HashMap<String, String> values = new HashMap<>();
+
+        ObservableList<Node> nodes = facts_container.getChildren();
+
+        for (int i = 0; i < nodes.size();){
+
+            Text text = (Text) nodes.get(i);
+            String key = text.getText();
+
+            i = i + 1;
+
+            ComboBox comboBox = (ComboBox) nodes.get(i);
+            String value = (String) comboBox.getSelectionModel().getSelectedItem();
+
+            i = i + 1;
+
+            values.put(key, value);
+        }
+
+        return  values;
+    }
 
     private ArrayList<JSONObject> load_bases(){
 
@@ -67,7 +131,7 @@ public class Main_Controller implements Initializable {
 
                 JSONObject jsonObject = new JSONObject(content);
                 files_content.add(jsonObject);
-           }
+            }
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -78,35 +142,37 @@ public class Main_Controller implements Initializable {
 
     private void select_base(JSONObject base){
 
-            facts_container.getChildren().clear();
+        this.selected_base = base;
 
-            JSONObject facts = base.getJSONObject("facts");
+        facts_container.getChildren().clear();
 
-            for (Iterator<String> it = facts.keys(); it.hasNext(); ) {
-                String fact = it.next();
-                
-                Text text = new Text(fact);
-                text.getStyleClass().add("label");
-                Translate translate_text = new Translate(text.getX() + margin_label_left, text.getY() + margin_label_top,0);
-                text.getTransforms().add(translate_text);
-                facts_container.getChildren().add(text);
+        JSONObject facts = base.getJSONObject("facts");
 
-                ComboBox<String> comboBox = new ComboBox<>();
-                ObservableList<String> obs = FXCollections.observableArrayList();
+        for (Iterator<String> it = facts.keys(); it.hasNext(); ) {
+            String fact = it.next();
+
+            Text text = new Text(fact);
+            text.getStyleClass().add("label");
+            Translate translate_text = new Translate(text.getX() + margin_label_left, text.getY() + margin_label_top,0);
+            text.getTransforms().add(translate_text);
+            facts_container.getChildren().add(text);
+
+            ComboBox<String> comboBox = new ComboBox<>();
+            ObservableList<String> obs = FXCollections.observableArrayList();
 
 
-                for (Object value : facts.getJSONArray(fact)) {
-                    obs.add(value.toString());}
+            for (Object value : facts.getJSONArray(fact)) {
+                obs.add(value.toString());}
 
-                comboBox.setItems(obs);
+            comboBox.setItems(obs);
 
-                Translate translate_combo = new Translate(comboBox.getLayoutX() + margin_combox_left, comboBox.getLayoutX() + margin_combox_top,0);
-                comboBox.getTransforms().add(translate_combo);
-                comboBox.setPrefWidth(facts_container.getPrefWidth());
-                facts_container.getChildren().add(comboBox);
+            Translate translate_combo = new Translate(comboBox.getLayoutX() + margin_combox_left, comboBox.getLayoutX() + margin_combox_top,0);
+            comboBox.getTransforms().add(translate_combo);
+            comboBox.setPrefWidth(facts_container.getPrefWidth());
+            facts_container.getChildren().add(comboBox);
 
-            }
         }
+    }
 
 
 
@@ -115,7 +181,7 @@ public class Main_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        ArrayList<JSONObject> bases = load_bases();
+        bases = load_bases();
         domain_container.getChildren().clear();
 
         for(JSONObject base : bases){
@@ -134,6 +200,7 @@ public class Main_Controller implements Initializable {
                     for(JSONObject b : bases){
                         if (b.get("title").equals(title))
                             select_base(b);
+
                     }
                 }
             }));
