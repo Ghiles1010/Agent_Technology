@@ -1,4 +1,4 @@
-package main;
+package part_1.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -20,7 +19,6 @@ import javafx.stage.Stage;
 import main.raisoneur.Raisonneur;
 import org.json.*;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -42,7 +40,7 @@ public class Main_Controller implements Initializable {
     private JSONObject selected_base;
     private ArrayList<JSONObject> bases;
 
-    String base_folder = System.getProperty("user.dir") + "\\src\\bases";
+    String base_folder = System.getProperty("user.dir") + "\\src\\part_1\\bases";
 
 
     @FXML
@@ -161,6 +159,7 @@ public class Main_Controller implements Initializable {
             ObservableList<String> obs = FXCollections.observableArrayList();
 
 
+
             for (Object value : facts.getJSONArray(fact)) {
                 obs.add(value.toString());}
 
@@ -179,6 +178,9 @@ public class Main_Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(base_folder);
 
 
         bases = load_bases();

@@ -1,7 +1,5 @@
-package main;
+package part_1.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,20 +7,17 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Rules_Controller {
 
@@ -159,7 +154,7 @@ public class Rules_Controller {
     @FXML
     void select_facts(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("Main_Scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/Main_Scene.fxml"));
         Stage window = (Stage) select_rules_btn.getScene().getWindow();
         window.setScene(new Scene(root));
 
