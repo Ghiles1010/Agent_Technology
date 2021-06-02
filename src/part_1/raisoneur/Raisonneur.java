@@ -2,12 +2,16 @@ package part_1.raisoneur;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class Raisonneur {
 
     public static String raisonner(JSONObject JSONrules, HashMap<String, String> facts, String but){
+
+        facts = checkFacts(facts);
+
         Rules activeRules = new Rules(JSONrules);
         boolean isStatic = false, ruleValue;
 
@@ -52,6 +56,19 @@ public class Raisonneur {
             System.out.println("Impossible de trouver le but");
             return null;
         }
+    }
+
+    public static HashMap<String, String> checkFacts (HashMap<String, String> facts){
+        ArrayList<String> to_remove = new ArrayList<>();
+        for (String key: facts.keySet()){
+            if (facts.get(key) == null){
+                to_remove.add(key);
+            }
+        }
+        for (String key: to_remove){
+            facts.remove(key);
+        }
+        return facts;
     }
 
 }
