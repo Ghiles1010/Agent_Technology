@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import main.raisoneur.Raisonneur;
+import part_1.raisoneur.Raisonneur;
 import org.json.*;
 
 import java.io.File;
