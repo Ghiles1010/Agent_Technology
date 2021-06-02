@@ -7,11 +7,35 @@ public class Form {
     private String to;
     private String date_depart;
     private String date_return;
-    private String number_persons;
+    private String number_tickets;
+    private String number_babies;
     private String number_kids;
     private String number_elders;
 
 
+
+
+
+
+
+
+
+
+    public String getNumber_tickets() {
+        return number_tickets;
+    }
+
+    public void setNumber_tickets(String number_tickets) {
+        this.number_tickets = number_tickets;
+    }
+
+    public String getNumber_babies() {
+        return number_babies;
+    }
+
+    public void setNumber_babies(String number_babies) {
+        this.number_babies = number_babies;
+    }
 
     public String getFrom() {
         return from;
@@ -43,14 +67,6 @@ public class Form {
 
     public void setDate_return(String date_return) {
         this.date_return = date_return;
-    }
-
-    public String getNumber_persons() {
-        return number_persons;
-    }
-
-    public void setNumber_persons(String number_persons) {
-        this.number_persons = number_persons;
     }
 
     public String getNumber_kids() {

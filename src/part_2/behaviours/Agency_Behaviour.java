@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Agence_Behaviour extends CyclicBehaviour {
+public class Agency_Behaviour extends CyclicBehaviour {
 
     private JSONObject selected_base;
 
-    public Agence_Behaviour(JSONObject selected_base) {
+    public Agency_Behaviour(JSONObject selected_base) {
 
         this.selected_base = selected_base;
 
@@ -32,13 +32,13 @@ public class Agence_Behaviour extends CyclicBehaviour {
 
         JSONObject content = new JSONObject(message.getContent());
 
-        JSONObject rules = selected_base.getJSONObject("rules");
-        String but  = selected_base.getString("but");
-        HashMap<String, String> values = get_values(content);
+        //JSONObject rules = selected_base.getJSONObject("rules");
+        //String but  = selected_base.getString("but");
+        //HashMap<String, String> values = get_values(content);
 
-        String result = main.raisoneur.Raisonneur.raisonner(rules, values, but);
+        //String result = main.raisoneur.Raisonneur.raisonner(rules, values, but);
 
-        System.out.println(result);
+        System.out.println("received : " + content.toString());
     }
 
 

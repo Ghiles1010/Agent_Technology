@@ -1,0 +1,37 @@
+.explain_text
+{
+    -fx-font-size: 10px;
+    -fx-fill: #6e6e6e;
+}
+
+.title
+{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: #133147;
+}
+
+.button
+{
+    -fx-background-color: #133147;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+#background{
+   -fx-background-color: white;
+
+}
+
+
+
+
+
+.combo-box
+{
+    -fx-background-color: white;
+    -fx-border-color : grey;
+    -fx-border-radius: 3;
+
+}

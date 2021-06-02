@@ -1,0 +1,79 @@
+package part_2.controllers;
+
+import jade.gui.GuiEvent;
+import jade.wrapper.AgentController;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
+import part_2.Main;
+import part_2.agents.Central_Agent;
+import part_2.utils.Form;
+import part_2.utils.GUI;
+
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
+import javafx.scene.control.TextField;
+
+public class Main_Controller implements Initializable {
+
+
+    private Central_Agent central_agent;
+
+    @FXML
+    private TextField depart_field;
+    @FXML
+    private TextField arrival_field;
+    @FXML
+    private DatePicker depart_date;
+    @FXML
+    private DatePicker return_date;
+    @FXML
+    private TextField num_tickets_field;
+    @FXML
+    private TextField num_babies_field;
+    @FXML
+    private TextField num_kids_field;
+    @FXML
+    private TextField num_elders_field;
+
+
+
+    private Form get_form(){
+
+        Form form = new Form();
+
+        form.setFrom(depart_field.getText());
+        form.setTo(arrival_field.getText());
+
+        String date = depart_date.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
+        form.setDate_depart(date);
+
+        date = return_date.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
+        form.setDate_return(date);
+
+        form.setNumber_tickets(num_tickets_field.getText());
+        form.setNumber_babies(num_babies_field.getText());
+        form.setNumber_kids(num_kids_field.getText());
+        form.setNumber_elders(num_elders_field.getText());
+
+        return form;
+    }
+
+    @FXML
+    private void search(){
+
+        GuiEvent ge = new GuiEvent(this, 0);
+        ge.addParameter(get_form());
+        central_agent.postGuiEvent(ge);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.central_agent = GUI.central_agent;
+
+    }
+}
