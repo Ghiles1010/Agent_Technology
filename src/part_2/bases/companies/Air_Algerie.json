@@ -1,0 +1,42 @@
+{
+   "company_name":"Air_Algerie",
+   "country": "Algerie",
+   "flights":[
+      {
+         "from": "alger",
+         "to": "paris",
+         "escales" : [],
+         "price": "2000"
+      },
+      {
+         "from": "paris",
+         "to": "alger",
+         "escales" : [],
+         "price": "2000"
+      },
+      {
+         "from": "alger",
+         "to": "paris",
+         "escales" : [
+            "bejaia"
+         ],
+         "price": "2000"
+      },
+      {
+         "from": "alger",
+         "to": "tokyo",
+         "escales" : [
+            "istanbul"
+         ],
+         "price": "2000"
+      }
+   ],
+   "promotions":{
+      "Babies": "15%",
+      "kids": "10%",
+      "Elders": "10%",
+      "plus de 4 places": "10%",
+      "escale":"5%",
+      "Periode Estivale": "5%"
+   }
+}
