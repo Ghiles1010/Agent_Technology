@@ -7,6 +7,8 @@ import java.util.*;
 
 public class ReturnedInstance {
 
+    private String company;
+
     private String departure, arrival;
     private String departureDate, returnDate;
     private int price;
@@ -14,8 +16,8 @@ public class ReturnedInstance {
     private ArrayList<String> escales;
     private HashMap<String, Promotion> promotions;
 
-    public ReturnedInstance(JSONObject flight) {
-
+    public ReturnedInstance(String company, JSONObject flight) {
+        this.company = company;
         this.departure = flight.getString("from");
         this.arrival = flight.getString("to");
         String p = flight.getString("price");
@@ -31,8 +33,8 @@ public class ReturnedInstance {
         this.promotions = new HashMap<>(  );
     }
 
-    public ReturnedInstance(JSONObject flight, JSONObject promos, HashMap<String, String> facts) {
-        this(flight);
+    public ReturnedInstance(String company, JSONObject flight, JSONObject promos, HashMap<String, String> facts) {
+        this(company, flight);
         this.addPromotions(promos, facts);
     }
 
@@ -101,5 +103,27 @@ public class ReturnedInstance {
 
     public HashMap<String, Promotion> getPromotions() {
         return promotions;
+    }
+
+    public JSONObject toJson(){
+        JSONObject json =  new JSONObject();
+
+        json.put("company_name", this.company);
+        json.put("price", this.price);
+        json.put("departure_date", this.departureDate);
+        json.put("return_date", this.returnDate);
+
+        JSONArray array = new JSONArray();
+        for (String escale: this.escales){
+            array.put(escale);
+        }
+        json.put("escales", array);
+
+        JSONObject promos =  new JSONObject();
+        for (String promo_indexes: this.promotions.keySet()){
+            promos.put(promo_indexes, this.promotions.get(promo_indexes));
+        }
+        json.put("promotions", promos);
+        return json;
     }
 }

@@ -29,7 +29,7 @@ public class Raisonneur {
         ArrayList<ReturnedInstance> returnFlights = new ArrayList<>();
 
         for (JSONObject flight : listFlights){
-            returnFlights.add(new ReturnedInstance(flight, agencyInformations.getJSONObject("promotions"), facts));
+            returnFlights.add(new ReturnedInstance(agencyInformations.getString("company_name"), flight, agencyInformations.getJSONObject("promotions"), facts));
         }
         return returnFlights;
     }
@@ -68,6 +68,14 @@ public class Raisonneur {
         } else {
             return false;
         }
+    }
+
+    public static JSONArray toJson(ArrayList<ReturnedInstance> returnedInstances){
+        JSONArray jarray = new JSONArray();
+        for (ReturnedInstance returnedInstance: returnedInstances){
+            jarray.put(returnedInstance.toJson());
+        }
+        return jarray;
     }
 
 }

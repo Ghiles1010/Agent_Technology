@@ -1,5 +1,6 @@
 package part_2.raisoneur;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -32,6 +33,8 @@ public class Main {
         facts.put("Elders", "1");
 
         ArrayList<ReturnedInstance> rt = Raisonneur.raisonner(jsonObject, facts);
-        System.out.println();
+        JSONArray j = Raisonneur.toJson(rt);
+        System.out.println(j );
+
     }
 }
