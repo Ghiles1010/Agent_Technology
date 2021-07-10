@@ -1,4 +1,4 @@
-package main.raisoneur;
+package part_1.raisoneur;
 
 public class Condition {
     private final String variableName, operatorToCompare, operation;

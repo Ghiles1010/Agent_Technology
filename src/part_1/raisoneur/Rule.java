@@ -1,4 +1,4 @@
-package main.raisoneur;
+package part_1.raisoneur;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
