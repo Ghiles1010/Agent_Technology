@@ -16,10 +16,8 @@ public class Raisonneur {
         ArrayList<JSONObject> listFlights = new ArrayList<>(); // the list of lights that match the destination and departure
         for (int i=0; i<flights.length(); i++){
             JSONObject jsonFlight = flights.getJSONObject(i);
-            String from = jsonFlight.getString("from");
-            String to = jsonFlight.getString("to");
 
-            if (from.equals(facts.get("departure")) && to.equals(facts.get("arrival"))){
+            if (checkValidity(jsonFlight, facts)){
                 listFlights.add(jsonFlight);
             }
         }
@@ -34,6 +32,42 @@ public class Raisonneur {
             returnFlights.add(new ReturnedInstance(flight, agencyInformations.getJSONObject("promotions"), facts));
         }
         return returnFlights;
+    }
+
+    private static boolean checkValidity(JSONObject jsonFlight, HashMap<String, String> facts) {
+        String from = jsonFlight.getString("from");
+        String to = jsonFlight.getString("to");
+        int nb_places = jsonFlight.getInt("seats");
+        JSONObject departure = jsonFlight.getJSONObject("departure date");
+        JSONObject arrival = jsonFlight.getJSONObject("arrival date");
+
+
+        return from.equals(facts.get("departure")) && to.equals(facts.get("arrival")) && (nb_places >= Integer.parseInt(facts.get("personnes")))
+                && (sameMonth(departure, arrival, facts.get("departure date"), facts.get("return date")));
+    }
+
+    private static boolean sameMonth(JSONObject departureDate, JSONObject returnDate, String clientDeparture, String Clientreturn) {
+
+        int departureMonth = departureDate.getInt("month");
+        int returnMonth = returnDate.getInt("month");
+        int departureYear = departureDate.getInt("year");
+        int returnYear = departureDate.getInt("year");
+
+        String[] str = clientDeparture.split("/");
+        int month = Integer.parseInt(str[1]);
+        int year = Integer.parseInt(str[2]);
+        if (departureMonth == month && departureYear == year){
+            str = Clientreturn.split("/");
+            month = Integer.parseInt(str[1]);
+            year = Integer.parseInt(str[2]);
+            if (returnMonth == month && returnYear == year){
+                return true;
+            } else{
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
 }

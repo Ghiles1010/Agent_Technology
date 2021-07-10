@@ -8,6 +8,7 @@ import java.util.*;
 public class ReturnedInstance {
 
     private String departure, arrival;
+    private String departureDate, returnDate;
     private int price;
 
     private ArrayList<String> escales;
@@ -19,6 +20,9 @@ public class ReturnedInstance {
         this.arrival = flight.getString("to");
         String p = flight.getString("price");
         this.price = Integer.parseInt(p);
+
+        this.departureDate = flight.getJSONObject("departure date").getInt("day") + "/" + flight.getJSONObject("departure date").getInt("month") + "/" + flight.getJSONObject("departure date").getInt("year");
+        this.returnDate = flight.getJSONObject("arrival date").getInt("day") + "/" + flight.getJSONObject("arrival date").getInt("month") + "/" + flight.getJSONObject("arrival date").getInt("year");
 
         this.escales = new ArrayList<>(  );
         for (int i=0; i<flight.getJSONArray("escales").length(); i++){

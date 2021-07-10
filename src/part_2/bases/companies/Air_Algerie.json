@@ -3,31 +3,79 @@
    "country": "Algerie",
    "flights":[
       {
+         "num_flight": 0,
          "from": "alger",
          "to": "paris",
          "escales" : [],
+         "departure date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 28,
+            "month": 2,
+            "year": 2021
+         },
+         "seats": 200,
          "price": "2000"
       },
       {
+         "num_flight": 1,
          "from": "paris",
          "to": "alger",
          "escales" : [],
+         "departure date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 5,
+            "month": 2,
+            "year": 2021
+         },
+         "seats": 200,
          "price": "2000"
       },
       {
+         "num_flight": 2,
          "from": "alger",
          "to": "paris",
          "escales" : [
             "bejaia"
          ],
+         "departure date": {
+            "day": 1,
+            "month": 4,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 1,
+            "month": 5,
+            "year": 2021
+         },
+         "seats": 200,
          "price": "2000"
       },
       {
+         "num_flight": 3,
          "from": "alger",
          "to": "tokyo",
+         "departure date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
          "escales" : [
             "istanbul"
          ],
+         "seats": 200,
          "price": "2000"
       }
    ],
