@@ -1,0 +1,29 @@
+.item:hover
+{
+    -fx-background-color: #e8e8e8;
+}
+
+.item
+{
+    -fx-background-color: white;
+    -fx-border-style: hidden none solid none;
+    -fx-border-color : #cfcfcf;
+    -fx-border-radius: 3;
+}
+
+.company_text
+{
+    -fx-font-size: 18px;
+    -fx-fill: #133147;
+    -fx-font-weight: bold;
+}
+
+.price_text
+{
+    -fx-font-size: 12px;
+    -fx-fill: #6e6e6e;
+    -fx-font-weight: bold;
+}
+
+
+

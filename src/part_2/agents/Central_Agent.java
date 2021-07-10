@@ -2,6 +2,7 @@ package part_2.agents;
 
 import com.google.gson.Gson;
 import jade.core.AID;
+import jade.core.behaviours.Behaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -9,18 +10,24 @@ import jade.domain.FIPAException;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.lang.acl.ACLMessage;
+import part_1.controllers.Rules_Controller;
 import part_2.Main;
+import part_2.behaviours.Central_Behaviour;
+import part_2.controllers.Validation_Controller;
 import part_2.utils.Form;
 import part_2.utils.GUI;
 
 public class Central_Agent extends GuiAgent {
 
-
-
+    Central_Behaviour behaviour;
 
     protected void setup(){
 
         GUI.central_agent  = this;
+
+        this.behaviour = new Central_Behaviour();
+
+        addBehaviour(behaviour);
 
     }
 
@@ -29,11 +36,13 @@ public class Central_Agent extends GuiAgent {
 
 
         Form form = (Form) guiEvent.getParameter(0);
+        Validation_Controller controller = (Validation_Controller) guiEvent.getParameter(1);
+
+        this.behaviour.setController(controller);
+
         String message_text = new Gson().toJson(form);
 
         diffuse_message(message_text);
-
-
     }
 
     private void diffuse_message(String message_text){
@@ -66,4 +75,7 @@ public class Central_Agent extends GuiAgent {
 
 
     }
+
+
+
 }

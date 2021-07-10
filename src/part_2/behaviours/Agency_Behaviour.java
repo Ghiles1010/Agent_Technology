@@ -1,6 +1,7 @@
 package part_2.behaviours;
 
 import com.google.gson.JsonObject;
+import jade.core.AID;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -30,6 +31,9 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
         ACLMessage message = this.myAgent.blockingReceive();
 
+        AID AID_sender = message.getSender();
+
+
         JSONObject content = new JSONObject(message.getContent());
 
         //JSONObject rules = selected_base.getJSONObject("rules");
@@ -38,7 +42,21 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
         //String result = main.raisoneur.Raisonneur.raisonner(rules, values, but);
 
-        System.out.println("received : " + content.toString());
+        System.out.println(getAgent().getLocalName() + "\n" +
+                "received : " + content.toString() + "\n");
+
+        ACLMessage message_to_send = new ACLMessage(ACLMessage.INFORM);
+        message_to_send.setContent("result of " + getAgent().getLocalName());
+        message_to_send.addReceiver(new AID(AID_sender.getLocalName(), AID.ISLOCALNAME));
+
+        getAgent().send(message_to_send);
+
+
+
+
+
+
+
     }
 
 

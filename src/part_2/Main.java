@@ -27,8 +27,9 @@ public class Main extends Application {
 
         jade_args[0] = "-gui";
 
-        jade_args[1] = "Central_Agent:part_2.agents.Central_Agent;" +
-                       "Air_Algeria:part_2.agents.Agency_Agent(Hello);";
+        jade_args[1] = "Central_Agent:part_2.agents.Central_Agent;"
+                + "Air_Algeria:part_2.agents.Agency_Agent(Hello);"
+                + "Air_France:part_2.agents.Agency_Agent(Hello);";
 
 
         jade.Boot.main(jade_args);
@@ -47,36 +48,3 @@ public class Main extends Application {
 
 
 }
-
-/*
-public class Main {
-
-    public static int[] T = new int[12];
-
-
-
-
-    public static void main(String[] args) {
-
-
-
-
-        String jade_args[] = new String[2];
-        jade_args[0] = "-gui";
-        jade_args[1] = "";
-
-        String agent = "Central_Agent:mini_projet.src.part_2.agents.Central_Agent;";
-
-        jade_args[1] = agent
-
-
-
-        jade.Boot.main(jade_args);
-
-    }
-
-
-}
-
-
- */

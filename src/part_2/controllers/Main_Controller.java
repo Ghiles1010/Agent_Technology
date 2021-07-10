@@ -3,14 +3,20 @@ package part_2.controllers;
 import jade.gui.GuiEvent;
 import jade.wrapper.AgentController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.stage.Stage;
+import part_1.controllers.Rules_Controller;
 import part_2.Main;
 import part_2.agents.Central_Agent;
 import part_2.utils.Form;
 import part_2.utils.GUI;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -63,10 +69,21 @@ public class Main_Controller implements Initializable {
     }
 
     @FXML
-    private void search(){
+    private void search() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        System.out.println(System.getProperty("user.dir"));
+        loader.setLocation(getClass().getResource("../fxml/Validation_Scene.fxml"));
+        Parent rules_scene = loader.load();
+
+        Validation_Controller controller = loader.getController();
+
+        Stage window = (Stage) depart_field.getScene().getWindow();
+        window.setScene(new Scene(rules_scene));
 
         GuiEvent ge = new GuiEvent(this, 0);
         ge.addParameter(get_form());
+        ge.addParameter(controller);
         central_agent.postGuiEvent(ge);
     }
 
