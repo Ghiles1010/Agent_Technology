@@ -21,7 +21,7 @@ public class Main {
                 "companies" + File.separator + "Air_Algerie.json"), StandardCharsets.UTF_8);
 
         JSONObject jsonObject = new JSONObject(content);
-        HashMap<String, String> facts = new HashMap<>();
+        JSONObject facts = new JSONObject();
         facts.put("departure", "alger");
         facts.put("arrival", "paris");
 

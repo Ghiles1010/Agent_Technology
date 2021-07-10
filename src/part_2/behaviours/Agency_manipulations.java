@@ -18,24 +18,37 @@ public class Agency_manipulations {
 
     static String base_folder = System.getProperty("user.dir") + File.separator + "src"+ File.separator + "part_2" + File.separator + "bases" + File.separator + "companies";
 
-    public static JSONArray returnAgencies(){
+    public static void addFlight(String data){
+        JSONObject json = new JSONObject( data );
+
+        String Agency = json.getString("agency");
+        int numFlight = json.getInt("num_flight");
+        JSONObject flight_infos = json.getJSONObject("flight_infos");
+    }
+
+    public static void alterFlight(String data ){
+        JSONObject json = new JSONObject( data );
+
+        String Agency = json.getString("agency");
+        int numFlight = json.getInt("num_flight");
+        JSONObject flightUpdate = json.getJSONObject("flight_infos");
+    }
+
+    public static void ConfirmReservation(String data){
+        JSONObject json = new JSONObject( data );
+
+        String Agency = json.getString("agency");
+        int numFlight = json.getInt("num_flight");
+        int nb_place_reserver = json.getInt("nb_places");
 
     }
 
-    public static JSONObject returnFlights(String Agency){
 
-    }
-
-    public static void addFlight(String Agency, JSONObject flight_infos){
-
-    }
-
-    public static void alterFlight(String Agency, JSONObject flight_infos){
-
-    }
-
-    public static String raisonner(HashMap<String, String> facts){
+    public static String raisonner(JSONObject facts){
         ArrayList<JSONObject> companies = returnFileAgencies();
+
+
+
         ArrayList<ReturnedInstance> returned_instances = Raisonneur.raisonner(companies, facts);
         JSONArray jarray = Raisonneur.toJson(returned_instances);
         return jarray.toString();

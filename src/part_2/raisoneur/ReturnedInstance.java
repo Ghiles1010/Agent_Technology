@@ -33,35 +33,35 @@ public class ReturnedInstance {
         this.promotions = new HashMap<>(  );
     }
 
-    public ReturnedInstance(String company, JSONObject flight, JSONObject promos, HashMap<String, String> facts) {
+    public ReturnedInstance(String company, JSONObject flight, JSONObject promos, JSONObject facts) {
         this(company, flight);
         this.addPromotions(promos, facts);
     }
 
-    public void addPromotions(JSONObject promos, HashMap<String, String> facts){
+    public void addPromotions(JSONObject promos, JSONObject facts){
 
-        if ( Integer.parseInt(facts.get("Babies")) >= 1){
-            this.promotions.put("Babies", new Promotion(Integer.parseInt(facts.get("Babies")), promos.getString("Babies")));
+        if ( Integer.parseInt(facts.getString("Babies")) >= 1){
+            this.promotions.put("Babies", new Promotion(Integer.parseInt(facts.getString("Babies")), promos.getString("Babies")));
         }
 
-        if ( Integer.parseInt(facts.get("kids")) >= 1){
-            this.promotions.put("kids", new Promotion(Integer.parseInt(facts.get("kids")), promos.getString("kids")));
+        if ( Integer.parseInt(facts.getString("kids")) >= 1){
+            this.promotions.put("kids", new Promotion(Integer.parseInt(facts.getString("kids")), promos.getString("kids")));
         }
 
-        if ( Integer.parseInt(facts.get("Elders")) >= 1){
-            this.promotions.put("Elders", new Promotion(Integer.parseInt(facts.get("Elders")), promos.getString("Elders")));
+        if ( Integer.parseInt(facts.getString("Elders")) >= 1){
+            this.promotions.put("Elders", new Promotion(Integer.parseInt(facts.getString("Elders")), promos.getString("Elders")));
         }
 
-        if (checkEstivalPeriod(facts.get("departure date"), facts.get("return date"))){
-            this.promotions.put("Periode Estivale", new Promotion(Integer.parseInt(facts.get("personnes")), promos.getString("Periode Estivale")));
+        if (checkEstivalPeriod(facts.getString("departure date"), facts.getString("return date"))){
+            this.promotions.put("Periode Estivale", new Promotion(Integer.parseInt(facts.getString("personnes")), promos.getString("Periode Estivale")));
         }
 
-        if (Integer.parseInt(facts.get("personnes")) >= 4){
+        if (Integer.parseInt(facts.getString("personnes")) >= 4){
             this.promotions.put("plus de 4 places", new Promotion(1, promos.getString("plus de 4 places")));
         }
 
         if (!this.escales.isEmpty()){
-            this.promotions.put("escale", new Promotion(Integer.parseInt(facts.get("personnes")), promos.getString("escale")));
+            this.promotions.put("escale", new Promotion(Integer.parseInt(facts.getString("personnes")), promos.getString("escale")));
         }
     }
 

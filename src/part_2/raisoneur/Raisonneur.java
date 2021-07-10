@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Raisonneur {
 
-    public static ArrayList<ReturnedInstance> raisonner(ArrayList<JSONObject> agenciesInformations, HashMap<String, String> facts){
+    public static ArrayList<ReturnedInstance> raisonner(ArrayList<JSONObject> agenciesInformations, JSONObject facts){
         ArrayList<ReturnedInstance> returnFlights = new ArrayList<>();
 
         for (JSONObject agencyInformations: agenciesInformations){
@@ -35,7 +35,7 @@ public class Raisonneur {
         return returnFlights;
     }
 
-    private static boolean checkValidity(JSONObject jsonFlight, HashMap<String, String> facts) {
+    private static boolean checkValidity(JSONObject jsonFlight, JSONObject facts) {
         String from = jsonFlight.getString("from");
         String to = jsonFlight.getString("to");
         int nb_places = jsonFlight.getInt("seats");
@@ -43,8 +43,8 @@ public class Raisonneur {
         JSONObject arrival = jsonFlight.getJSONObject("arrival date");
 
 
-        return from.equals(facts.get("departure")) && to.equals(facts.get("arrival")) && (nb_places >= Integer.parseInt(facts.get("personnes")))
-                && (sameMonth(departure, arrival, facts.get("departure date"), facts.get("return date")));
+        return from.equals(facts.get("departure")) && to.equals(facts.get("arrival")) && (nb_places >= Integer.parseInt(facts.getString("personnes")))
+                && (sameMonth(departure, arrival, facts.getString("departure date"), facts.getString("return date")));
     }
 
     private static boolean sameMonth(JSONObject departureDate, JSONObject returnDate, String clientDeparture, String Clientreturn) {
