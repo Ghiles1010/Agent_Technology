@@ -9,27 +9,28 @@ import java.util.*;
 
 public class Raisonneur {
 
-    public static ArrayList<ReturnedInstance> raisonner(JSONObject agencyInformations, HashMap<String, String> facts){
-
-        JSONArray flights = agencyInformations.getJSONArray("flights");
-
-        ArrayList<JSONObject> listFlights = new ArrayList<>(); // the list of lights that match the destination and departure
-        for (int i=0; i<flights.length(); i++){
-            JSONObject jsonFlight = flights.getJSONObject(i);
-
-            if (checkValidity(jsonFlight, facts)){
-                listFlights.add(jsonFlight);
-            }
-        }
-
-        if (listFlights.isEmpty()){
-            return new ArrayList<>();
-        }
-
+    public static ArrayList<ReturnedInstance> raisonner(ArrayList<JSONObject> agenciesInformations, HashMap<String, String> facts){
         ArrayList<ReturnedInstance> returnFlights = new ArrayList<>();
 
-        for (JSONObject flight : listFlights){
-            returnFlights.add(new ReturnedInstance(agencyInformations.getString("company_name"), flight, agencyInformations.getJSONObject("promotions"), facts));
+        for (JSONObject agencyInformations: agenciesInformations){
+            JSONArray flights = agencyInformations.getJSONArray("flights");
+
+            ArrayList<JSONObject> listFlights = new ArrayList<>(); // the list of lights that match the destination and departure
+            for (int i=0; i<flights.length(); i++){
+                JSONObject jsonFlight = flights.getJSONObject(i);
+
+                if (checkValidity(jsonFlight, facts)){
+                    listFlights.add(jsonFlight);
+                }
+            }
+
+            if (listFlights.isEmpty()){
+                return new ArrayList<>();
+            }
+
+            for (JSONObject flight : listFlights){
+                returnFlights.add(new ReturnedInstance(agencyInformations.getString("company_name"), flight, agencyInformations.getJSONObject("promotions"), facts));
+            }
         }
         return returnFlights;
     }
