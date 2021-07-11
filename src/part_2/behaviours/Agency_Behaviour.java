@@ -36,7 +36,6 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
         AID AID_sender = message.getSender();
 
-
         JSONObject content = new JSONObject(message.getContent());
 
 

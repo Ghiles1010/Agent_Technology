@@ -54,13 +54,13 @@ public class Main_Controller implements Initializable {
 
         Form form = new Form();
 
-        form.setFrom(depart_field.getText());
-        form.setTo(arrival_field.getText());
+        form.setFrom(depart_field.getText().toLowerCase());
+        form.setTo(arrival_field.getText().toLowerCase());
 
-        String date = depart_date.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
+        String date = depart_date.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         form.setDate_depart(date);
 
-        date = return_date.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
+        date = return_date.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         form.setDate_return(date);
 
         form.setNumber_tickets(num_tickets_field.getText());
