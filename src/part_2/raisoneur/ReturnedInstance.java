@@ -153,12 +153,6 @@ public class ReturnedInstance {
             array.put(escale);
         }
         json.put("escales", array);
-
-        JSONObject promos =  new JSONObject();
-        for (String promo_indexes: this.promotions.keySet()){
-            promos.put(promo_indexes, this.promotions.get(promo_indexes));
-        }
-        json.put("promotions", promos);
         return json;
     }
 }
