@@ -66,7 +66,7 @@ public class ReturnedInstance {
     }
 
     private static Date strToDate(String strDate){
-        String[] str = strDate.split("/");
+        String[] str = strDate.split("-");
         int day = Integer.parseInt(str[0]);
         int year = Integer.parseInt(str[2]);
         int month = Integer.parseInt(str[1]) - 1;
