@@ -14,13 +14,6 @@ public class Form {
 
 
 
-
-
-
-
-
-
-
     public String getNumber_tickets() {
         return number_tickets;
     }

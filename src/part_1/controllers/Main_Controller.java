@@ -57,7 +57,7 @@ public class Main_Controller implements Initializable {
     void select_rules(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Rules_Scene.fxml"));
+        loader.setLocation(getClass().getResource("../fxml/Rules_Scene.fxml"));
         Parent rules_scene = loader.load();
 
         Rules_Controller controller = loader.getController();

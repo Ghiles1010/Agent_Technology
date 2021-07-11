@@ -42,17 +42,12 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
         String result = Agency_manipulations.raisonner(selected_base, content);
 
-        System.out.println(result);
-
-        System.out.println(getAgent().getLocalName() + "\n" +
-                "received : " + content.toString() + "\n");
 
         ACLMessage message_to_send = new ACLMessage(ACLMessage.INFORM);
-        message_to_send.setContent("result of " + getAgent().getLocalName());
+        message_to_send.setContent(result);
         message_to_send.addReceiver(new AID(AID_sender.getLocalName(), AID.ISLOCALNAME));
 
         getAgent().send(message_to_send);
-
 
 
     }

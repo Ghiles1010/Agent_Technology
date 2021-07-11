@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import part_2.agents.Central_Agent;
 import part_2.utils.GUI;
@@ -39,9 +40,11 @@ public class Validation_Controller implements Initializable{
 
     }
 
-    private void update_iteckets_ui(JSONObject tickets){
+    private void update_iteckets_ui(JSONArray tickets){
 
         System.out.println(tickets.toString());
+
+
         tickets_container.getChildren().clear();
 
         Insets space = new Insets(5,25,5,20);
@@ -84,7 +87,7 @@ public class Validation_Controller implements Initializable{
 
     }
 
-    public void update_tickets(JSONObject tickets){
+    public void update_tickets(JSONArray tickets){
 
 
         Platform.runLater(new Runnable() {
