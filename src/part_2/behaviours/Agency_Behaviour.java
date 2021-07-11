@@ -8,6 +8,7 @@ import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import org.json.JSONObject;
+import part_2.agents.Agency_Agent;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -38,11 +39,11 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
         JSONObject content = new JSONObject(message.getContent());
 
-        //JSONObject rules = selected_base.getJSONObject("rules");
-        //String but  = selected_base.getString("but");
-        //HashMap<String, String> values = get_values(content);
 
-        //String result = main.raisoneur.Raisonneur.raisonner(rules, values, but);
+
+        String result = Agency_manipulations.raisonner(content);
+
+        System.out.println(result);
 
         System.out.println(getAgent().getLocalName() + "\n" +
                 "received : " + content.toString() + "\n");
