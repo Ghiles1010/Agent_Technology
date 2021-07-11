@@ -53,11 +53,11 @@ public class Raisonneur {
         int departureYear = departureDate.getInt("year");
         int returnYear = departureDate.getInt("year");
 
-        String[] str = clientDeparture.split("/");
+        String[] str = clientDeparture.split("-");
         int month = Integer.parseInt(str[1]);
         int year = Integer.parseInt(str[2]);
         if (departureMonth == month && departureYear == year){
-            str = Clientreturn.split("/");
+            str = Clientreturn.split("-");
             month = Integer.parseInt(str[1]);
             year = Integer.parseInt(str[2]);
             if (returnMonth == month && returnYear == year){
