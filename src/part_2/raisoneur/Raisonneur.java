@@ -42,8 +42,8 @@ public class Raisonneur {
         JSONObject arrival = jsonFlight.getJSONObject("arrival date");
 
 
-        return from.equals(facts.get("departure")) && to.equals(facts.get("arrival")) && (nb_places >= Integer.parseInt(facts.getString("personnes")))
-                && (sameMonth(departure, arrival, facts.getString("departure date"), facts.getString("return date")));
+        return from.equals(facts.get("from")) && to.equals(facts.get("to")) && (nb_places >= Integer.parseInt(facts.getString("number_tickets")))
+                && (sameMonth(departure, arrival, facts.getString("date_depart"), facts.getString("date_return")));
     }
 
     private static boolean sameMonth(JSONObject departureDate, JSONObject returnDate, String clientDeparture, String Clientreturn) {

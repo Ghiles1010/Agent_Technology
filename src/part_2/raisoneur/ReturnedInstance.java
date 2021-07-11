@@ -40,28 +40,28 @@ public class ReturnedInstance {
 
     public void addPromotions(JSONObject promos, JSONObject facts){
 
-        if ( Integer.parseInt(facts.getString("Babies")) >= 1){
-            this.promotions.put("Babies", new Promotion(Integer.parseInt(facts.getString("Babies")), promos.getString("Babies")));
+        if ( Integer.parseInt(facts.getString("number_babies")) >= 1){
+            this.promotions.put("Babies", new Promotion(Integer.parseInt(facts.getString("number_babies")), promos.getString("Babies")));
         }
 
-        if ( Integer.parseInt(facts.getString("kids")) >= 1){
-            this.promotions.put("kids", new Promotion(Integer.parseInt(facts.getString("kids")), promos.getString("kids")));
+        if ( Integer.parseInt(facts.getString("number_kids")) >= 1){
+            this.promotions.put("kids", new Promotion(Integer.parseInt(facts.getString("number_kids")), promos.getString("kids")));
         }
 
-        if ( Integer.parseInt(facts.getString("Elders")) >= 1){
-            this.promotions.put("Elders", new Promotion(Integer.parseInt(facts.getString("Elders")), promos.getString("Elders")));
+        if ( Integer.parseInt(facts.getString("number_elders")) >= 1){
+            this.promotions.put("Elders", new Promotion(Integer.parseInt(facts.getString("number_elders")), promos.getString("Elders")));
         }
 
-        if (checkEstivalPeriod(facts.getString("departure date"), facts.getString("return date"))){
-            this.promotions.put("Periode Estivale", new Promotion(Integer.parseInt(facts.getString("personnes")), promos.getString("Periode Estivale")));
+        if (checkEstivalPeriod(facts.getString("date_depart"), facts.getString("date_return"))){
+            this.promotions.put("Periode Estivale", new Promotion(Integer.parseInt(facts.getString("number_tickets")), promos.getString("Periode Estivale")));
         }
 
-        if (Integer.parseInt(facts.getString("personnes")) >= 4){
+        if (Integer.parseInt(facts.getString("number_tickets")) >= 4){
             this.promotions.put("plus de 4 places", new Promotion(1, promos.getString("plus de 4 places")));
         }
 
         if (!this.escales.isEmpty()){
-            this.promotions.put("escale", new Promotion(Integer.parseInt(facts.getString("personnes")), promos.getString("escale")));
+            this.promotions.put("escale", new Promotion(Integer.parseInt(facts.getString("number_tickets")), promos.getString("escale")));
         }
     }
 

@@ -18,19 +18,19 @@ public class Main {
 
 
         String content = Files.readString(Paths.get("src" + File.separator + "part_2" + File.separator + "bases" + File.separator +
-                "companies" + File.separator + "Air_Algerie.json"), StandardCharsets.UTF_8);
+                 "Air_Algerie.json"), StandardCharsets.UTF_8);
 
         JSONObject jsonObject = new JSONObject(content);
         JSONObject facts = new JSONObject();
-        facts.put("departure", "alger");
-        facts.put("arrival", "paris");
+        facts.put("from", "alger");
+        facts.put("to", "paris");
 
-        facts.put("personnes", "5");
-        facts.put("departure date", "10/02/2021");
-        facts.put("return date", "28/02/2021");
-        facts.put("Babies", "1");
-        facts.put("kids", "2");
-        facts.put("Elders", "1");
+        facts.put("number_tickets", "5");
+        facts.put("date_depart", "10/02/2021");
+        facts.put("date_return", "28/02/2021");
+        facts.put("number_babies", "1");
+        facts.put("number_kids", "2");
+        facts.put("number_elders", "1");
 
         ArrayList<ReturnedInstance> rt = Raisonneur.raisonner(jsonObject, facts);
         JSONArray j = Raisonneur.toJson(rt);
