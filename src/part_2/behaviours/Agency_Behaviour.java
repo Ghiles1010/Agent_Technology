@@ -41,6 +41,8 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
         String result = Agency_manipulations.raisonner(selected_base, content);
 
+        System.out.println(result);
+
 
         ACLMessage message_to_send = new ACLMessage(ACLMessage.INFORM);
         message_to_send.setContent(result);

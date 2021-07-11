@@ -28,8 +28,10 @@ public class Main extends Application {
         jade_args[0] = "-gui";
 
         jade_args[1] = "Central_Agent:part_2.agents.Central_Agent;"
-                + "Air_Algeria:part_2.agents.Agency_Agent(Air_Algerie.json);";
-                //+ "Air_France:part_2.agents.Agency_Agent(Air_France.json);";
+                + "Air_Algeria:part_2.agents.Agency_Agent(Air_Algerie.json);"
+                + "Air_France:part_2.agents.Agency_Agent(Air_France.json);"
+                + "Air_Belgique:part_2.agents.Agency_Agent(Air_Belgique.json);"
+                + "US_Airlines:part_2.agents.Agency_Agent(US_Airlines.json);";
 
 
         jade.Boot.main(jade_args);
