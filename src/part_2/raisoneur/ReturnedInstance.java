@@ -11,7 +11,7 @@ public class ReturnedInstance {
 
     private String departure, arrival;
     private String departureDate, returnDate;
-    private int price;
+    private int price, nbPersones;
 
     private ArrayList<String> escales;
     private HashMap<String, Promotion> promotions;
@@ -63,7 +63,42 @@ public class ReturnedInstance {
         if (!this.escales.isEmpty()){
             this.promotions.put("escale", new Promotion(Integer.parseInt(facts.getString("number_tickets")), promos.getString("escale")));
         }
+        this.nbPersones = Integer.parseInt(facts.getString("number_tickets"));
+        calculatepromotions();
     }
+
+    private void calculatepromotions(){
+        int newPrice = this.price;
+        if (this.promotions.containsKey("escale")){
+            newPrice -= this.promotions.get("escale").getPourcentage() * this.price / 100;
+        }
+
+        if (this.promotions.containsKey("Periode Estivale")){
+            newPrice -= this.promotions.get("Periode Estivale").getPourcentage() * this.price / 100;
+        }
+
+        newPrice *= this.nbPersones;
+
+        if (this.promotions.containsKey("plus de 4 places")){
+            newPrice -= this.promotions.get("plus de 4 places").getPourcentage() * this.price / 100;
+        }
+
+        if (this.promotions.containsKey("Elders")){
+            newPrice -= this.promotions.get("Elders").getPourcentage() * this.promotions.get("Elders").getNbPersones() * this.price / 100;
+        }
+
+        if (this.promotions.containsKey("kids")){
+            newPrice -= this.promotions.get("kids").getPourcentage() * this.promotions.get("kids").getNbPersones() * this.price / 100;
+        }
+
+        if (this.promotions.containsKey("Babies")){
+            newPrice -= this.promotions.get("Babies").getPourcentage() * this.promotions.get("Babies").getNbPersones() * this.price / 100;
+        }
+
+        this.price = newPrice;
+
+    }
+
 
     private static Date strToDate(String strDate){
         String[] str = strDate.split("-");
