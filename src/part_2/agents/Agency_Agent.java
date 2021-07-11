@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Agency_Agent extends Agent {
 
 
-    private String base_folder = System.getProperty("user.dir") + "\\src\\part_2\\bases";
+    private String base_folder = System.getProperty("user.dir") + "\\src\\part_2\\bases\\";
 
     protected void setup(){
 

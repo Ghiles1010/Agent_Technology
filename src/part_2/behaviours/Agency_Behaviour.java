@@ -40,7 +40,6 @@ public class Agency_Behaviour extends CyclicBehaviour {
         JSONObject content = new JSONObject(message.getContent());
 
 
-
         String result = Agency_manipulations.raisonner(selected_base, content);
 
         System.out.println(result);
