@@ -1,0 +1,90 @@
+{
+   "company_name":"US_Airlines",
+   "country": "US",
+   "flights":[
+      {
+         "num_flight": 0,
+         "from": "US",
+         "to": "paris",
+         "escales" : [],
+         "departure date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 28,
+            "month": 2,
+            "year": 2021
+         },
+         "seats": 200,
+         "price": "2000"
+      },
+      {
+         "num_flight": 1,
+         "from": "US",
+         "to": "alger",
+         "escales" : [],
+         "departure date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 5,
+            "month": 2,
+            "year": 2021
+         },
+         "seats": 200,
+         "price": "2000"
+      },
+      {
+         "num_flight": 2,
+         "from": "alger",
+         "to": "US",
+         "escales" : [
+            "bejaia"
+         ],
+         "departure date": {
+            "day": 1,
+            "month": 4,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 1,
+            "month": 5,
+            "year": 2021
+         },
+         "seats": 200,
+         "price": "2000"
+      },
+      {
+         "num_flight": 3,
+         "from": "US",
+         "to": "tokyo",
+         "departure date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "arrival date": {
+            "day": 1,
+            "month": 2,
+            "year": 2021
+         },
+         "escales" : [
+            "istanbul"
+         ],
+         "seats": 200,
+         "price": "2000"
+      }
+   ],
+   "promotions":{
+      "Babies": "15%",
+      "kids": "10%",
+      "Elders": "10%",
+      "plus de 4 places": "10%",
+      "escale":"5%",
+      "Periode Estivale": "5%"
+   }
+}
