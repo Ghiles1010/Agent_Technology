@@ -18,12 +18,15 @@ import part_2.utils.GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.PublicKey;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.scene.control.TextField;
 
 public class Main_Controller implements Initializable {
+
+    public static final String ID = "MAIN_SCENE";
 
 
     private Central_Agent central_agent;
@@ -82,6 +85,7 @@ public class Main_Controller implements Initializable {
         window.setScene(new Scene(rules_scene));
 
         GuiEvent ge = new GuiEvent(this, 0);
+        ge.addParameter(Main_Controller.ID);
         ge.addParameter(get_form());
         ge.addParameter(controller);
         central_agent.postGuiEvent(ge);

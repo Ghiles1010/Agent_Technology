@@ -2,6 +2,8 @@ package part_2.controllers;
 
 import com.google.gson.JsonObject;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -22,17 +24,27 @@ import java.util.ResourceBundle;
 
 public class Validation_Controller implements Initializable{
 
+    public static final String ID = "VALIDATION_SCENE";
+
     private Central_Agent central_agent;
 
     @FXML
     private VBox tickets_container;
+
+
+
+    private void buy_ticket(int x){
+
+        System.out.println("Hi "+x);
+
+    }
 
     private void update_iteckets_ui(JSONObject tickets){
 
         System.out.println(tickets.toString());
         tickets_container.getChildren().clear();
 
-        Insets space = new Insets(5,5,5,10);
+        Insets space = new Insets(5,25,5,20);
 
         HBox item = new HBox();
         item.setPadding(space);
@@ -52,7 +64,13 @@ public class Validation_Controller implements Initializable{
         price_text.getStyleClass().add("price_text");
 
         Button valider_btn = new Button();
+        valider_btn.setUserData(98);
         valider_btn.setText("Valider");
+        valider_btn.setOnAction(event -> {
+            int x = (int) valider_btn.getUserData();
+            buy_ticket(x);
+        }
+        );
 
 
         item_left.getChildren().add(company_name);

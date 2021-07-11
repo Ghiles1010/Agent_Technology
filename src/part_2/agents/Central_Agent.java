@@ -13,6 +13,7 @@ import jade.lang.acl.ACLMessage;
 import part_1.controllers.Rules_Controller;
 import part_2.Main;
 import part_2.behaviours.Central_Behaviour;
+import part_2.controllers.Main_Controller;
 import part_2.controllers.Validation_Controller;
 import part_2.utils.Form;
 import part_2.utils.GUI;
@@ -34,15 +35,25 @@ public class Central_Agent extends GuiAgent {
     @Override
     protected void onGuiEvent(GuiEvent guiEvent) {
 
+        String scene = (String) guiEvent.getParameter(0);
 
-        Form form = (Form) guiEvent.getParameter(0);
-        Validation_Controller controller = (Validation_Controller) guiEvent.getParameter(1);
+        switch (scene) {
+            case Main_Controller.ID:
 
-        this.behaviour.setController(controller);
+                Form form = (Form) guiEvent.getParameter(1);
+                Validation_Controller controller = (Validation_Controller) guiEvent.getParameter(2);
 
-        String message_text = new Gson().toJson(form);
+                this.behaviour.setController(controller);
 
-        diffuse_message(message_text);
+                String message_text = new Gson().toJson(form);
+
+                diffuse_message(message_text);
+                break;
+
+            case Validation_Controller.ID:
+                
+                break;
+        }
     }
 
     private void diffuse_message(String message_text){
