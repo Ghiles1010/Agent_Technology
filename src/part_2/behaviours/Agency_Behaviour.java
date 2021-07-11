@@ -41,7 +41,7 @@ public class Agency_Behaviour extends CyclicBehaviour {
 
 
 
-        String result = Agency_manipulations.raisonner(content);
+        String result = Agency_manipulations.raisonner(selected_base, content);
 
         System.out.println(result);
 

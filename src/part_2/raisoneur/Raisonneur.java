@@ -9,29 +9,28 @@ import java.util.*;
 
 public class Raisonneur {
 
-    public static ArrayList<ReturnedInstance> raisonner(ArrayList<JSONObject> agenciesInformations, JSONObject facts){
+    public static ArrayList<ReturnedInstance> raisonner(JSONObject agencyInformations, JSONObject facts){
+
         ArrayList<ReturnedInstance> returnFlights = new ArrayList<>();
+        JSONArray flights = agencyInformations.getJSONArray("flights");
 
-        for (JSONObject agencyInformations: agenciesInformations){
-            JSONArray flights = agencyInformations.getJSONArray("flights");
+        ArrayList<JSONObject> listFlights = new ArrayList<>(); // the list of lights that match the destination and departure
+        for (int i=0; i<flights.length(); i++){
+            JSONObject jsonFlight = flights.getJSONObject(i);
 
-            ArrayList<JSONObject> listFlights = new ArrayList<>(); // the list of lights that match the destination and departure
-            for (int i=0; i<flights.length(); i++){
-                JSONObject jsonFlight = flights.getJSONObject(i);
-
-                if (checkValidity(jsonFlight, facts)){
-                    listFlights.add(jsonFlight);
-                }
-            }
-
-            if (listFlights.isEmpty()){
-                return new ArrayList<>();
-            }
-
-            for (JSONObject flight : listFlights){
-                returnFlights.add(new ReturnedInstance(agencyInformations.getString("company_name"), flight, agencyInformations.getJSONObject("promotions"), facts));
+            if (checkValidity(jsonFlight, facts)){
+                listFlights.add(jsonFlight);
             }
         }
+
+        if (listFlights.isEmpty()){
+            return new ArrayList<>();
+        }
+
+        for (JSONObject flight : listFlights){
+            returnFlights.add(new ReturnedInstance(agencyInformations.getString("company_name"), flight, agencyInformations.getJSONObject("promotions"), facts));
+        }
+
         return returnFlights;
     }
 

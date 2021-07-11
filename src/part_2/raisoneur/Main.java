@@ -32,10 +32,7 @@ public class Main {
         facts.put("kids", "2");
         facts.put("Elders", "1");
 
-        ArrayList<JSONObject> list = new ArrayList<>( );
-        list.add(jsonObject);
-
-        ArrayList<ReturnedInstance> rt = Raisonneur.raisonner(list, facts);
+        ArrayList<ReturnedInstance> rt = Raisonneur.raisonner(jsonObject, facts);
         JSONArray j = Raisonneur.toJson(rt);
         System.out.println(j );
 

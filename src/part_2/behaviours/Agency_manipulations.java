@@ -44,12 +44,9 @@ public class Agency_manipulations {
     }
 
 
-    public static String raisonner(JSONObject facts){
-        ArrayList<JSONObject> companies = returnFileAgencies();
+    public static String raisonner(JSONObject baseDeFaits, JSONObject facts){
 
-
-
-        ArrayList<ReturnedInstance> returned_instances = Raisonneur.raisonner(companies, facts);
+        ArrayList<ReturnedInstance> returned_instances = Raisonneur.raisonner(baseDeFaits, facts);
         JSONArray jarray = Raisonneur.toJson(returned_instances);
         return jarray.toString();
     }
